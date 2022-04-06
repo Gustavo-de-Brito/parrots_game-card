@@ -14,21 +14,39 @@ function askNumberCards() {
 
 function setNumberCards(qtd) {
     const numberCards = cards.length;
-    console.log(document.querySelector(".cards"));
+
     if(qtd !== numberCards) {
         for(let i = 0; i < (qtd - numberCards) / 2; i++) {
             document.querySelector(".cards").innerHTML += `
             <div class="pair-cards">
-                <div class="card">
-                    <img src="images/front.png">
+                <div class="card" onclick="flipCard(this)">
+                    <div class="face back-face">
+                        <img src="images/unicornparrot.gif">
+                    </div>
+                    <div class="face">
+                        <img src="images/front.png">
+                    </div>
                 </div>
-                <div class="card">
-                    <img src="images/front.png">
+                <div class="card" onclick="flipCard(this)">
+                    <div class="face back-face">
+                        <img src="images/unicornparrot.gif">
+                    </div>
+                    <div class="face">
+                        <img src="images/front.png">
+                    </div>
                 </div>
             </div>`;
         }
     }
-    console.log(document.querySelectorAll(".card").length)
+}
+
+function flipCard(element) {
+    element.querySelector(".face:first-child").classList.toggle("back-flip");
+    element.querySelector(".face:last-child").classList.toggle("front-flip");
+}
+
+function test() {
+    console.log("AAAAAAAAAAAAAAAAAAAAAAAAAA");
 }
 
 askNumberCards();

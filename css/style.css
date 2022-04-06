@@ -33,14 +33,42 @@ body {
 .pair-cards {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .card {
+    position: relative;
+    width: 160px;
+    height: 200px;
     margin: 17px;
+}
+
+.face {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 30px 15px;
     background-color: #A7E9AF;
     border: 2px solid #99CEA8;
     border-radius: 10px;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: all .5s;
+    transform-style: preserve-3d;
+}
+
+.back-face {
+    transform: rotateY(180deg);
+}
+
+.back-flip {
+    transform: rotateY(0deg);
+}
+
+.front-flip {
+    transform: rotateY(-180deg);
 }
 
 @media only screen and (max-width: 650px) {
