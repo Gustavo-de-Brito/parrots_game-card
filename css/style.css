@@ -6,14 +6,13 @@
 
 body {
     font-family: 'Roboto', sans-serif;
+    background-color: #EEF9BF;
 }
 
 .main-container {
-    height: 100%;
-    display: flex;
+    display: flex;  
     flex-direction: column;
     align-items: center;
-    background-color: #EEF9BF;
     color: #75B79E;
 }
 
@@ -27,9 +26,13 @@ body {
 .cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    width: 70%;
+    justify-content: center;
+    width: 90%;
+}
+
+.pair-cards {
+    display: flex;
+    flex-direction: column;
 }
 
 .card {
@@ -46,6 +49,8 @@ body {
     }
 
     .cards {
+        display: flex;
         flex-direction: column;
+        align-items: center;
     }
 }
