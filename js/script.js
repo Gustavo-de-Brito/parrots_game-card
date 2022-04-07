@@ -4,21 +4,13 @@ let firstCard;
 let secondCard;
 let qtdPlays = 0;
 let canFlip = true;
+let seconds = 0;
+let minutes = 0;
 
+let timer; 
 
 function comparador() { 
 	return Math.random() - 0.5;
-}
-
-function askNumberCards() {
-    const qtdCards = Number(prompt("Digite uma quantidade par de cartas entre 4 e 14 para iniciar o jogo"));
-    
-    if(qtdCards % 2 === 0 && 4 <= qtdCards <= 14) {
-        setNumberCards(qtdCards);
-    } else {
-        alert("Número inválido");
-        askNumberCards();
-    }
 }
 
 function setNumberCards(qtd) {
@@ -30,40 +22,68 @@ function setNumberCards(qtd) {
         <div class="pair-cards">
             <div class="card" onclick="flipCard(this)">
                 <div class="face back-face">
-                    <img src="images/${backFaces[i]}">
+                    <img src=".images/${backFaces[i]}">
                 </div>
                 <div class="face">
-                    <img src="images/front.png">
+                    <img src=".images/front.png">
                 </div>
             </div>
             <div class="card" onclick="flipCard(this)">
                 <div class="face back-face">
-                    <img src="images/${backFaces[i + 1]}">
+                    <img src=".images/${backFaces[i + 1]}">
                 </div>
                 <div class="face">
-                    <img src="images/front.png">
+                    <img src=".images/front.png">
                 </div>
             </div>
         </div>`;
     }
-}
 
-function flipCard(element) {
-    if(canFlip) {
-        element.querySelector(".face:first-child").classList.add("back-flip");
-        element.querySelector(".face:last-child").classList.add("front-flip");
+    timer = setInterval(function() {
+        seconds++;
         
-        if(firstCard === undefined) {
-            firstCard = element;
-            
-        } else {
-            secondCard = element;
-            verifyPair();
-            
+        if(seconds === 60) {
+            minutes++;
+            seconds = 0;
         }
     
-        qtdPlays++;
+        document.querySelector(".timer").innerHTML = `${minutes}m${seconds}s`;
+        console.log(`${seconds} segundos`);
+    }, 1000);
+}
 
+function askNumberCards() {
+    const qtdCards = Number(prompt("Escolha uma quantidade de cartas par entre 4 e 14 para iniciar"));
+    
+    if(qtdCards % 2 === 0 && 4 <= qtdCards <= 14) {
+        setNumberCards(qtdCards);
+    } else {
+        alert("Valor inválid");
+    }
+}
+
+function restartGame() {
+    document.querySelector(".cards").innerHTML = "";
+    qtdPlays = 0;
+    askNumberCards();
+}
+
+function verifyEndGame() {
+    const qtdCards = document.querySelectorAll(".card").length;
+    const qtdDoneCards = document.querySelectorAll(".front-flip").length;
+
+    if(qtdCards === qtdDoneCards) {
+        clearInterval(timer);
+        setTimeout(function() {
+            alert(`Você venceu em ${minutes}m${seconds}s com ${qtdPlays} jogadas!`);
+            const playAgain = prompt("Deseja jogar novamente?")
+
+            if(playAgain === "sim") {
+                restartGame();
+            }
+
+        }, 500);
+        
     }
 }
 
@@ -99,15 +119,22 @@ function verifyPair() {
 
 }
 
-function verifyEndGame() {
-    const qtdCards = document.querySelectorAll(".card").length;
-    const qtdDoneCards = document.querySelectorAll(".front-flip").length;
-
-    if(qtdCards === qtdDoneCards) {
-        setTimeout(function() {
-            alert(`Você venceu em ${qtdPlays} jogadas`);
-        }, 500);
-
+function flipCard(element) {
+    if(canFlip) {
+        element.querySelector(".face:first-child").classList.add("back-flip");
+        element.querySelector(".face:last-child").classList.add("front-flip");
+        
+        if(firstCard === undefined) {
+            firstCard = element;
+            
+        } else {
+            secondCard = element;
+            verifyPair();
+            
+        }
+    
+        qtdPlays++;
+        
     }
 }
 

@@ -16,6 +16,19 @@ body {
     color: #75B79E;
 }
 
+.timer {
+    padding: 8px;
+    background-color: #EEF9BF;
+    border: 2px solid #99CEA8;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 10px;
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    z-index: 1;
+}
+
 .main-container > h1 {
     margin: 50px 12px;
     text-align: center;
@@ -79,11 +92,5 @@ body {
 @media only screen and (max-width: 650px) {
     .main-container > h1 {
         font-size: 36px;
-    }
-
-    .cards {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
     }
 }
