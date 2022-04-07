@@ -22,18 +22,18 @@ function setNumberCards(qtd) {
         <div class="pair-cards">
             <div class="card" onclick="flipCard(this)">
                 <div class="face back-face">
-                    <img src=".images/${backFaces[i]}">
+                    <img src="./images/${backFaces[i]}">
                 </div>
                 <div class="face">
-                    <img src=".images/front.png">
+                    <img src="./images/front.png">
                 </div>
             </div>
             <div class="card" onclick="flipCard(this)">
                 <div class="face back-face">
-                    <img src=".images/${backFaces[i + 1]}">
+                    <img src="./images/${backFaces[i + 1]}">
                 </div>
                 <div class="face">
-                    <img src=".images/front.png">
+                    <img src="./images/front.png">
                 </div>
             </div>
         </div>`;
