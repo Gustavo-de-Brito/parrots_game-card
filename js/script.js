@@ -57,7 +57,8 @@ function askNumberCards() {
     if(qtdCards % 2 === 0 && 4 <= qtdCards <= 14) {
         setNumberCards(qtdCards);
     } else {
-        alert("Valor inválid");
+        alert("Valor inválido");
+        askNumberCards();
     }
 }
 
