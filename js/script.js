@@ -48,7 +48,6 @@ function setNumberCards(qtd) {
         }
     
         document.querySelector(".timer").innerHTML = `${minutes}m${seconds}s`;
-        console.log(`${seconds} segundos`);
     }, 1000);
 }
 
@@ -65,6 +64,8 @@ function askNumberCards() {
 function restartGame() {
     document.querySelector(".cards").innerHTML = "";
     qtdPlays = 0;
+    seconds = 0;
+    minutes = 0;
     askNumberCards();
 }
 
